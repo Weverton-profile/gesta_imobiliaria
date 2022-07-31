@@ -9,7 +9,7 @@ defmodule GestaoImobiliaria.Rotinas do
       
         imoveis = Enum.filter(imoveis, filtro)
 
-        imprimi_informações(imoveis, length(imoveis), 0, 1)
+        # imprimi_informações(imoveis, length(imoveis), 0, 1)
     end
     
     def terrenos_a_venda_por_tamanho(terrenos, vendas, tamanho) do
@@ -18,7 +18,7 @@ defmodule GestaoImobiliaria.Rotinas do
         end
       
         terrenos = Enum.filter(terrenos, filtro)
-        imprimi_informações(terrenos, length(terrenos), 0, 2)
+        # imprimi_informações(terrenos, length(terrenos), 0, 2)
     end
 
     def imoveis_vendidos_por_corretor(imoveis, corretor, vendas) do
@@ -38,7 +38,7 @@ defmodule GestaoImobiliaria.Rotinas do
         vendas = Enum.map(vendas, pegue_o_produto)
         vendas = Enum.filter(vendas, filtre_por_imoveis)
 
-        imprimi_informações(vendas, length(vendas), 0, 3)
+        # imprimi_informações(vendas, length(vendas), 0, 3)
     end   
 
     def imoveis_para_alugar_por_bairro(bairro, imoveis, alugueis) do
@@ -48,7 +48,7 @@ defmodule GestaoImobiliaria.Rotinas do
       
         imoveis =  Enum.filter(imoveis, filtro)
 
-        imprimi_informações(imoveis, length(imoveis), 0, 4)
+        # imprimi_informações(imoveis, length(imoveis), 0, 4)
     end
     
     def imoveis_para_alugar_construcao_menor_que_2(imoveis, alugueis) do
@@ -57,35 +57,35 @@ defmodule GestaoImobiliaria.Rotinas do
         end
       
         imoveis = Enum.filter(imoveis, filtro)
-        imprimi_informações(imoveis, length(imoveis), 0, 5)
+        # imprimi_informações(imoveis, length(imoveis), 0, 5)
     end
     
-    def imprimi_informações(array, tamanho, indice, chamado) do
-        if tamanho > 0 do
-            case chamado do
-                1 ->
-                    casa = Enum.at(array, indice)
-                    IO.puts("#{casa.id}, #{casa.area}, #{casa.ano}, #{casa.bairro}, #{casa.preco}, #{casa.tipo}")
-                    imprimi_informações(array, tamanho - 1, indice + 1, 1)
-                2 ->
-                    terreno = Enum.at(array, indice)
-                    IO.puts("#{terreno.id}, #{terreno.tamanho}, #{terreno.zona}")
-                    imprimi_informações(array, tamanho - 1, indice + 1, 2)
-                3 ->
-                    imoveis_vendidos = Enum.at(array, indice)
-                    IO.puts("#{imoveis_vendidos.id}, #{imoveis_vendidos.area}, #{imoveis_vendidos.ano}, #{imoveis_vendidos.bairro}, #{imoveis_vendidos.preco}, #{imoveis_vendidos.tipo}")
-                    imprimi_informações(array, tamanho - 1, indice + 1, 3)
-                4 ->
-                    alugar = Enum.at(array, indice)
-                    IO.puts("#{alugar.id}, #{alugar.area}, #{alugar.ano}, #{alugar.bairro}, #{alugar.preco}, #{alugar.tipo}")
-                    imprimi_informações(array, tamanho - 1, indice + 1, 4)   
-                5 ->
-                    casa = Enum.at(array, indice)
-                    IO.puts("#{casa.id}, #{casa.area}, #{casa.ano}, #{casa.bairro}, #{casa.preco}, #{casa.tipo}")
-                    imprimi_informações(array, tamanho - 1, indice + 1, 5)                
-            end
-        end
-    end
+    # def imprimi_informações(array, tamanho, indice, chamado) do
+    #     if tamanho > 0 do
+    #         case chamado do
+    #             1 ->
+    #                 casa = Enum.at(array, indice)
+    #                 IO.puts("#{casa.id}, #{casa.area}, #{casa.ano}, #{casa.bairro}, #{casa.preco}, #{casa.tipo}")
+    #                 imprimi_informações(array, tamanho - 1, indice + 1, 1)
+    #             2 ->
+    #                 terreno = Enum.at(array, indice)
+    #                 IO.puts("#{terreno.id}, #{terreno.tamanho}, #{terreno.zona}")
+    #                 imprimi_informações(array, tamanho - 1, indice + 1, 2)
+    #             3 ->
+    #                 imoveis_vendidos = Enum.at(array, indice)
+    #                 IO.puts("#{imoveis_vendidos.id}, #{imoveis_vendidos.area}, #{imoveis_vendidos.ano}, #{imoveis_vendidos.bairro}, #{imoveis_vendidos.preco}, #{imoveis_vendidos.tipo}")
+    #                 imprimi_informações(array, tamanho - 1, indice + 1, 3)
+    #             4 ->
+    #                 alugar = Enum.at(array, indice)
+    #                 IO.puts("#{alugar.id}, #{alugar.area}, #{alugar.ano}, #{alugar.bairro}, #{alugar.preco}, #{alugar.tipo}")
+    #                 imprimi_informações(array, tamanho - 1, indice + 1, 4)   
+    #             5 ->
+    #                 casa = Enum.at(array, indice)
+    #                 IO.puts("#{casa.id}, #{casa.area}, #{casa.ano}, #{casa.bairro}, #{casa.preco}, #{casa.tipo}")
+    #                 imprimi_informações(array, tamanho - 1, indice + 1, 5)                
+    #         end
+    #     end
+    # end
 
     def esta_a_venda?(produto, vendas) do
         produto_em_venda = fn venda ->
