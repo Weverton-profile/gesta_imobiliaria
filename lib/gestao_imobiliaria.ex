@@ -1,7 +1,9 @@
 defmodule GestaoImobiliaria do
   alias GestaoImobiliaria.Navegacao
-  use Application
   alias GestaoImobiliaria.Rotinas
+  alias GestaoImobiliaria.{Imovel, Terreno, Cliente, Corretor, Vendedor, Venda, Aluguel}
+  use Application
+
 
   def start(_,_) do
     main()
